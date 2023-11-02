@@ -1,3 +1,12 @@
 const appname = "eMart";
 const appversion = "Version 1.0.0";
 const credits = "@Baaba Devs";
+const email = "Name";
+const emailHint = "admin@gmail.com";
+const password = "Password";
+const passwordHint = "******";
+const forgetPasswowd = "Forget Password";
+const login = "Log in";
+const signUp = "Signup";
+const createAccount = "or, create a new account";
+const loginWith = "Log in with";
