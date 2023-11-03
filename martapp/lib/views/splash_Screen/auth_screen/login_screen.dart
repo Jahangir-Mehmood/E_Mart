@@ -1,3 +1,7 @@
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:martapp/consts/list.dart';
+import 'package:martapp/views/splash_Screen/auth_screen/signup.dart';
 import 'package:martapp/widget_common/applogo_widget.dart';
 import 'package:martapp/widget_common/bg_widget.dart';
 import 'package:martapp/widget_common/custom_textfield.dart';
@@ -11,6 +15,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return bgWidget(Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Center(
         child: Column(
           children: [
@@ -23,7 +28,7 @@ class LoginScreen extends StatelessWidget {
                 .fontFamily(semibold)
                 .size(18)
                 .make(),
-            10.heightBox,
+            15.heightBox,
             Column(
               children: [
                 customTextField(hint: emailHint, title: email),
@@ -47,13 +52,12 @@ class LoginScreen extends StatelessWidget {
                 5.heightBox,
                 createAccount.text.color(fontGrey).make(),
                 ourButton(
-                        color: lightGolden,
-                        title: signUp,
-                        textColor: whiteColor,
-                        onPress: () {})
-                    .box
-                    .width(context.screenWidth - 50)
-                    .make()
+                    color: lightGolden,
+                    title: signUp,
+                    textColor: whiteColor,
+                    onPress: () {
+                      Get.to(() => SignUpcreen());
+                    }).box.width(context.screenWidth - 50).make()
               ],
             )
                 .box
@@ -61,7 +65,26 @@ class LoginScreen extends StatelessWidget {
                 .rounded
                 .padding(const EdgeInsets.all(16))
                 .width(context.screenWidth - 70)
+                .shadowSm
                 .make(),
+            10.heightBox,
+            loginWith.text.color(lightGrey).make(),
+            5.heightBox,
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                    2,
+                    (index) => Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: CircleAvatar(
+                            backgroundColor: lightGrey,
+                            radius: 25,
+                            child: Image.asset(
+                              socialIconList[index],
+                              width: 30,
+                            ),
+                          ),
+                        )))
           ],
         ),
       ),
