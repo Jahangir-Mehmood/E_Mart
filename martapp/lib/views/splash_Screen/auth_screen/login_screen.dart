@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:martapp/consts/list.dart';
+import 'package:martapp/views/home_screen/homescreen.dart';
 import 'package:martapp/views/splash_Screen/auth_screen/signup.dart';
 import 'package:martapp/widget_common/applogo_widget.dart';
 import 'package:martapp/widget_common/bg_widget.dart';
@@ -45,7 +45,9 @@ class LoginScreen extends StatelessWidget {
                         color: redColor,
                         title: login,
                         textColor: whiteColor,
-                        onPress: () {})
+                        onPress: () {
+                          Get.to(const HomeScreen());
+                        })
                     .box
                     .width(context.screenWidth - 50)
                     .make(),

@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:martapp/consts/consts.dart';
 import 'package:martapp/controllers/signup_controller.dart';
 import '../../../widget_common/applogo_widget.dart';
@@ -9,6 +8,7 @@ import '../../../widget_common/our_button.dart';
 
 class SignUpcreen extends StatelessWidget {
   SignUpcreen({super.key});
+
   final signUpController = Get.put(SignUpController());
 
   @override
@@ -38,53 +38,61 @@ class SignUpcreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Checkbox(
-                        checkColor: redColor,
-                        value: signUpController.isChecked,
-                        onChanged: (newValue) {}),
+                    Obx(() {
+                      return Checkbox(
+                          checkColor: Colors.white,
+                          value: signUpController.isChecked.value,
+                          onChanged: (newValue) {
+                            signUpController.isChecked.value = newValue!;
+                          });
+                    }),
                     5.widthBox,
                     Expanded(
                       child: RichText(
                           text: const TextSpan(children: [
-                        TextSpan(
-                            text: 'I agree to the ',
-                            style:
+                            TextSpan(
+                                text: 'I agree to the ',
+                                style:
                                 TextStyle(fontFamily: bold, color: fontGrey)),
-                        TextSpan(
-                            text: termAndCond,
-                            style:
+                            TextSpan(
+                                text: termAndCond,
+                                style:
                                 TextStyle(fontFamily: bold, color: redColor)),
-                        TextSpan(
-                            text: ' & ',
-                            style:
+                            TextSpan(
+                                text: ' & ',
+                                style:
                                 TextStyle(fontFamily: bold, color: fontGrey)),
-                        TextSpan(
-                            text: privacyPolicy,
-                            style:
+                            TextSpan(
+                                text: privacyPolicy,
+                                style:
                                 TextStyle(fontFamily: bold, color: redColor)),
-                      ])),
+                          ])),
                     )
                   ],
                 ),
                 5.heightBox,
-                ourButton(
-                        color: redColor,
-                        title: signUp,
-                        textColor: whiteColor,
-                        onPress: () {})
+                Obx(() {
+                  return ourButton(
+                      color: signUpController.isChecked.value == true
+                          ? redColor
+                          : whiteColor,
+                      title: signUp,
+                      textColor: whiteColor,
+                      onPress: () {});
+                })
                     .box
                     .width(context.screenWidth - 50)
                     .make(),
                 10.heightBox,
                 RichText(
                     text: const TextSpan(children: [
-                  TextSpan(
-                      text: alreadyHaveAccount,
-                      style: TextStyle(fontFamily: bold, color: fontGrey)),
-                  TextSpan(
-                      text: login,
-                      style: TextStyle(fontFamily: bold, color: redColor)),
-                ])).onTap(() {
+                      TextSpan(
+                          text: alreadyHaveAccount,
+                          style: TextStyle(fontFamily: bold, color: fontGrey)),
+                      TextSpan(
+                          text: login,
+                          style: TextStyle(fontFamily: bold, color: redColor)),
+                    ])).onTap(() {
                   Get.back();
                 })
               ],
