@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:martapp/consts/colors.dart';
 import 'package:martapp/consts/consts.dart';
 import 'package:martapp/controllers/home_controller.dart';
 
@@ -11,9 +9,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var controller = Get.put(HomeController());
 
-    return Scaffold(
-        bottomNavigationBar: Obx(() {
-          return BottomNavigationBar(
+    return Scaffold(bottomNavigationBar: Obx(() {
+      return Column(
+        children: [
+          Expanded(child: controller.navBody.elementAt(controller.currentIndex.value)),
+          BottomNavigationBar(
             currentIndex: controller.currentIndex.value,
             type: BottomNavigationBarType.fixed,
             backgroundColor: whiteColor,
@@ -23,8 +23,9 @@ class HomeScreen extends StatelessWidget {
             onTap: (value) {
               controller.currentIndex.value = value;
             },
-          );
-        })
-    );
+          ),
+        ],
+      );
+    }));
   }
 }
