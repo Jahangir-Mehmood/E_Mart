@@ -17,4 +17,20 @@ const privacyPolicy = "Privacy Policy";
 const termAndCond = "Terms and Conditions";
 const alreadyHaveAccount = "Already have an account? ";
 
-const home = "Home",categories = "Categories", cart = "Cart",account = "account";
+const home = "Home", categories = "Categories", cart = "Cart", account = "account";
+
+//HOME SCREEN///
+const searchanything = 'Search anything...',
+    todaydeal = "Today's Deal",
+    flashsale = 'Flash Sale',
+    topsallers = 'Top Sellers',
+    brand = 'Brand',
+    topcategories = 'Top Categories',
+    womendress = 'Women Dress',
+    girlswatches = 'Girls Watches',
+    mobilephone = 'Mobile Phone',
+    boysglasses = 'Boys Glasses',
+    tshirts = 'TShirts',
+    girlsdresses = 'Girls Dresses',
+    featuredproduct = 'Featured Product',
+    featuredcategories = 'Featured categories';
